@@ -1,4 +1,4 @@
-# Projeto 2 da disciplina de Processamento Gráfico 2017.2 - CIN UFPE
+﻿# Projeto 2 da disciplina de Processamento Gráfico 2017.2 - CIN UFPE
 
 ## TEMA 20: Objeto transparente.
 ### Objetivo:
@@ -40,3 +40,4 @@ certo grau de transparência, então não se faz uma consulta ao z-buffer. Calcu
 pixel como se a consulta ao z-buffer tivesse retornado OK. A cor a ser colocada no frame-
 buffer é a cor calculada para o pixel, multiplicada por (1 – k t ) somada com a cor do frame-
 buffer multiplicada por k t .
+.
