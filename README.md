@@ -1,6 +1,6 @@
-## Projeto 2 da disciplina de Processamento Gráfico 2017.2 - CIN UFPE
+# Projeto 2 da disciplina de Processamento Gráfico 2017.2 - CIN UFPE
 
-### TEMA 20: Objeto transparente.
+## TEMA 20: Objeto transparente.
 ### Objetivo:
 #### Parte Geral: 
   Implementar o método de visualização de objetos triangulados, através do
