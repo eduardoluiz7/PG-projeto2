@@ -1,2 +1,1 @@
-# PG-projeto2
-Segundo projeto da disciplina Processamento Gráfico do curso de Ciência da Computação do CIn - UFPE
+## Projeto 2 da disciplina de Processamento Gráfico 2017.2 - CIN UFPE
