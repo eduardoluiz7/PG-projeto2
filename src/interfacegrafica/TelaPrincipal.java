@@ -6,7 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+/**
+ * 
+ * @author eduardoluiz (els6)
+ *
+ */
 public class TelaPrincipal extends JFrame {
 
 	private JPanel contentPane;
