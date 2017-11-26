@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 /**
  * 
- * @author eduardoluiz (els6)
+ * @author eduardoluiz <els6@cin.ufpe.br>
  *
  */
 public class TelaPrincipal extends JFrame {
