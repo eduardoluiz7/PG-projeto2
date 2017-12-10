@@ -23,9 +23,9 @@ public class Objeto {
 		Scanner scan = new Scanner(objeto);
 		scan.useLocale(Locale.ENGLISH);
 
-		// O primeiro inteiro é o número de vértices
+		// O primeiro inteiro é o numero de vertices
 		int qtdVertices = scan.nextInt();
-		// O segundo inteiro é o número de triangulos
+		// O segundo inteiro é o n�mero de triangulos
 		int qtdTriangulos = scan.nextInt();
 
 		// Mudar de coordenadas mundiais para o coordenadas de vista de todos os vértices do objeto

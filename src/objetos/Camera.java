@@ -10,13 +10,13 @@ import api.ProjecaoPontos;
 import api.Util;
 
 public class Camera {
-	public static Ponto3D C; // - Foco da câmera
+	public static Ponto3D C; // - Foco da camera
 	public static Ponto3D N; // - Vetor N antes de normalizar
 	public static Ponto3D V; // - Vetor V antes de normalizar
-	public static Ponto3D Vo; // - Vetor V após normalizar
-	public static Ponto3D No; // - Vetor N após normalizar
-	public static Ponto3D Vn; // - Vetor V após ortonormalizar
-	public static Ponto3D U; // - Vetor U obtido através de N normalizado e V ortonormalizado (Gran-Schimit)
+	public static Ponto3D Vo; // - Vetor V apos normalizar
+	public static Ponto3D No; // - Vetor N apos normalizar
+	public static Ponto3D Vn; // - Vetor V apos ortonormalizar
+	public static Ponto3D U; // - Vetor U obtido atraves de N normalizado e V ortonormalizado (Gran-Schimit)
 	public static double d, hx, hy; // - Distancias entre a camera e o objeto
 
 	public static ArrayList<Ponto3D> verticesConvertidos;
