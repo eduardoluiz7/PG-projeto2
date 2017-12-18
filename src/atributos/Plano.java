@@ -1,4 +1,4 @@
-package objetos;
+package atributos;
 
 import java.util.ArrayList;
 import java.util.Collections;

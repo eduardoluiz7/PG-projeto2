@@ -1,4 +1,4 @@
-package objetos;
+package atributos;
 
 public class Reta {
     public static Ponto3D v;

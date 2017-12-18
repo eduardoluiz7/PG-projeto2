@@ -1,4 +1,4 @@
-package objetos;
+package atributos;
 
 import java.io.File;
 import java.io.IOException;

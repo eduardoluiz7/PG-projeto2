@@ -1,6 +1,6 @@
 package api;
-import objetos.Ponto3D;
-import objetos.Triangulo;
+import atributos.Ponto3D;
+import atributos.Triangulo;
 
 
 public class Util {

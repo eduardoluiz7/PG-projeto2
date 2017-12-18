@@ -1,6 +1,6 @@
 package api;
 
-import objetos.Ponto3D;
+import atributos.Ponto3D;
 
 public class ProjecaoPontos extends MatrixUtil{
 	

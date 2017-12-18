@@ -1,4 +1,4 @@
-package objetos;
+package atributos;
 
 public class Ponto3D {
 	public double x,y,z;

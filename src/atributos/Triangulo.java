@@ -1,4 +1,4 @@
-package objetos;
+package atributos;
 
 
 public class Triangulo implements Comparable<Triangulo>{
