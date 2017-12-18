@@ -29,6 +29,9 @@ public class MainApp extends JFrame {
 	private JTextField textIluminacao;
 	private JButton btnOk;
 	private JButton btnAtualizar;
+	int ResX = 640;
+	int ResY = 480;
+	TelaG tela;
 
 	/**
 	 * Launch the application.
@@ -165,6 +168,11 @@ public class MainApp extends JFrame {
 		 * botão que confirma o desenho
 		 */
 		btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setup();
+			}
+		});
 		btnOk.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		btnOk.setBounds(135, 200, 111, 25);
 		contentPane.add(btnOk);
@@ -188,5 +196,18 @@ public class MainApp extends JFrame {
         }
         return ext;
     }
+	public void setup(){
+		Camera.setCamera();
+		Camera.convertObject(ResX, ResY);
+
+		Iluminacao.setIluminacao();
+
+		Camera.setIntervalos();
+		System.out.println("-> Variaveis manipuladas");
+
+		tela.scanLine3D();
+		tela.repaint();
+		System.out.println("Cores Calculadas e Objeto pintado com Phong");
+	}
 
 }
