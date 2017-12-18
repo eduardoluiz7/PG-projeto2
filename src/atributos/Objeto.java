@@ -11,25 +11,20 @@ public class Objeto {
 	public static ArrayList<Triangulo> triangulos;
 	
 	public static void setObjeto(String filepath) throws IOException {
-		// Declara conjunto de vertices
 		vertices = new ArrayList<Ponto3D>();
-		// Declata conjunto de triangulos
 		triangulos = new ArrayList<Triangulo>();
 
-		// Ler arquivo
 		File objeto = new File(filepath);
-
-		// Declara leitor de arquivo
 		Scanner scan = new Scanner(objeto);
 		scan.useLocale(Locale.ENGLISH);
 
-		// O primeiro inteiro Ã© o numero de vertices
-		int qtdVertices = scan.nextInt();
-		// O segundo inteiro Ã© o número de triangulos
-		int qtdTriangulos = scan.nextInt();
+		int numVertices = scan.nextInt(); //lê o numero de vertices
+		int numTriangulos = scan.nextInt(); //lê o numero de triangulos
 
-		// Mudar de coordenadas mundiais para o coordenadas de vista de todos os vÃ©rtices do objeto
-		for(int i=0; i<qtdVertices; i++){
+		/*
+		 * Muda de coordenadas mundiais para coordenadas de vista todos os vértices do objeto.
+		 */
+		for(int i=0; i<numVertices; i++){
 			double x = scan.nextDouble();
 			double y = scan.nextDouble();
 			double z = scan.nextDouble();
@@ -39,8 +34,7 @@ public class Objeto {
 			vertices.add(p);
 		}
 
-		// Lendo os triangulos
-		for(int i=0; i<qtdTriangulos; i++){
+		for(int i=0; i<numTriangulos; i++){ //lê os triângulos
 			int v1,v2,v3;
 			v1 = scan.nextInt() -1;
 			v2 = scan.nextInt() -1;

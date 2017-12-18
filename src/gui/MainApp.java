@@ -27,8 +27,8 @@ public class MainApp extends JFrame {
 	private JTextField txtObjeto;
 	private JTextField txtCmera;
 	private JTextField textIluminacao;
-	JPanel areaGraph;
 	private JButton btnOk;
+	private JButton btnAtualizar;
 
 	/**
 	 * Launch the application.
@@ -52,14 +52,14 @@ public class MainApp extends JFrame {
 	 */
 	public MainApp() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 881, 703);
+		setBounds(100, 100, 428, 308);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		txtObjeto = new JTextField();
-		txtObjeto.setBounds(44, 26, 116, 22);
+		txtObjeto.setBounds(12, 25, 116, 22);
 		txtObjeto.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		txtObjeto.setText("Objeto");
 		contentPane.add(txtObjeto);
@@ -89,13 +89,13 @@ public class MainApp extends JFrame {
 			    }
 			}
 		});
-		selecionarObjeto.setBounds(167, 25, 111, 25);
+		selecionarObjeto.setBounds(135, 24, 111, 25);
 		selecionarObjeto.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		contentPane.add(selecionarObjeto);
 		
 		txtCmera = new JTextField();
 		txtCmera.setFont(new Font("Century Gothic", Font.PLAIN, 14));
-		txtCmera.setBounds(303, 27, 116, 22);
+		txtCmera.setBounds(12, 75, 116, 22);
 		txtCmera.setText("C\u00E2mera");
 		contentPane.add(txtCmera);
 		txtCmera.setColumns(10);
@@ -104,7 +104,7 @@ public class MainApp extends JFrame {
 		 * Botão que seleciona a cãmera e suas ações
 		 */
 		JButton selecionarCamera = new JButton("Selecionar");
-		selecionarCamera.setBounds(425, 25, 111, 25);
+		selecionarCamera.setBounds(134, 73, 112, 25);
 		selecionarCamera.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		contentPane.add(selecionarCamera);
 		selecionarCamera.addActionListener(new ActionListener() {
@@ -127,21 +127,11 @@ public class MainApp extends JFrame {
 			}
 		});
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(290, 26, 1, 22);
-		separator.setOrientation(SwingConstants.VERTICAL);
-		contentPane.add(separator);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setOrientation(SwingConstants.VERTICAL);
-		separator_1.setBounds(548, 27, 1, 22);
-		contentPane.add(separator_1);
-		
 		textIluminacao = new JTextField();
 		textIluminacao.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		textIluminacao.setText("Ilumina\u00E7\u00E3o");
 		textIluminacao.setColumns(10);
-		textIluminacao.setBounds(561, 28, 116, 22);
+		textIluminacao.setBounds(12, 125, 116, 22);
 		contentPane.add(textIluminacao);
 		
 		
@@ -150,7 +140,7 @@ public class MainApp extends JFrame {
 		 */
 		JButton selecionaIluminacao = new JButton("Selecionar");
 		selecionaIluminacao.setFont(new Font("Century Gothic", Font.PLAIN, 14));
-		selecionaIluminacao.setBounds(689, 26, 111, 25);
+		selecionaIluminacao.setBounds(135, 124, 111, 25);
 		contentPane.add(selecionaIluminacao);
 		selecionaIluminacao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -171,20 +161,18 @@ public class MainApp extends JFrame {
 			    }
 			}
 		});
-		//JPanel da área onde os objetos serão exibidos
-		areaGraph = new JPanel();
-		areaGraph.setLayout(null);
-		areaGraph.setBorder(new EmptyBorder(5, 20, 5, 5));
-		areaGraph.setBounds(4, 132, 853, 524);
-		contentPane.add(areaGraph);
-		areaGraph.setBackground(Color.WHITE);
 		/*
 		 * botão que confirma o desenho
 		 */
 		btnOk = new JButton("OK");
 		btnOk.setFont(new Font("Century Gothic", Font.PLAIN, 14));
-		btnOk.setBounds(740, 80, 111, 25);
+		btnOk.setBounds(135, 200, 111, 25);
 		contentPane.add(btnOk);
+		
+		btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.setFont(new Font("Century Gothic", Font.PLAIN, 14));
+		btnAtualizar.setBounds(12, 201, 111, 25);
+		contentPane.add(btnAtualizar);
 	}
 	
 	/*
