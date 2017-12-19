@@ -205,8 +205,8 @@ public class MainApp extends JFrame {
 		Camera.setIntervalos();
 		System.out.println("-> Variaveis manipuladas");
 
-		tela.scanLine3D();
-		tela.repaint();
+		//tela.scanLine3D();
+		//tela.repaint();
 		System.out.println("Cores Calculadas e Objeto pintado com Phong");
 	}
 

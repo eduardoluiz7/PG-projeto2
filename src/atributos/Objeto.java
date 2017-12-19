@@ -15,6 +15,7 @@ public class Objeto {
 		triangulos = new ArrayList<Triangulo>();
 
 		File objeto = new File(filepath);
+		System.out.println(objeto.getPath());
 		Scanner scan = new Scanner(objeto);
 		scan.useLocale(Locale.ENGLISH);
 

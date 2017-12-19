@@ -29,23 +29,24 @@ public class Camera {
 	public static void initCamera(String filepath) throws IOException{
 		//cameraName = scan.next();
 		File camera = new File(filepath);
-		//System.out.println("----->"+camera.getPath());
+		System.out.println("----->"+camera.getPath());
 		BufferedReader reader = new BufferedReader(new FileReader(camera));
 
 		//Vetor C
 		//extract extrai 3 doubles de uma string e devolve um array com eles
 		double[] xyz = Util.extract(reader.readLine());
 		Camera.C = new Ponto3D(xyz[0],xyz[1],xyz[2]);
+		System.out.println("C " + C );
 
 		//Vetor N
 		xyz = Util.extract(reader.readLine());
 		Camera.N = new Ponto3D(xyz[0],xyz[1],xyz[2]);
-		//System.out.println("N entrada: " + N);
+		System.out.println("N entrada: " + N);
 
 		//Vetor V
 		xyz = Util.extract(reader.readLine());
 		Camera.V = new Ponto3D(xyz[0],xyz[1],xyz[2]);
-		//System.out.println("V entrada: " + V);
+		System.out.println("V entrada: " + V);
 
 		//d, hx, hy
 		xyz = Util.extract(reader.readLine());
@@ -64,13 +65,13 @@ public class Camera {
 		Camera.Vo = Util.ortogonalizar(Camera.V, Camera.N);
 		Camera.No = Camera.N.normalize();
 
-		//System.out.println("N ortogonalizado: " + No);
+		System.out.println("N ortogonalizado: " + No);
 
 		// Normalizando V
 
 		Camera.Vn=Camera.Vo.normalize();
 
-		//System.out.println("V ortogonalizado e normalizado: " + Vn);
+		System.out.println("V ortogonalizado e normalizado: " + Vn);
 
 		//gerando U 
 

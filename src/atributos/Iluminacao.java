@@ -20,7 +20,7 @@ public class Iluminacao {
 		// Ler arquivo
 		File iluminacaoEntrada = new File(filepath);
 		BufferedReader reader = new BufferedReader(new FileReader(iluminacaoEntrada));
-
+		System.out.println(iluminacaoEntrada.getPath());
 		// Primeira linha do arquivo possue as coordenadas do ponto de luz
 		double[] luz = Util.extract(reader.readLine());
 		Iluminacao.Pl = new Ponto3D(luz[0],luz[1],luz[2]);
