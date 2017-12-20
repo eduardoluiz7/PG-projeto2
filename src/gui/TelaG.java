@@ -16,7 +16,7 @@ public class TelaG extends JFrame {
 	public ArrayList<Triangulo> t;
 	public ArrayList<Triangulo> t2;
 	public int ResX = 640;
-	public int ResY = 480;
+	public int ResY = 640;
 	int qtdPontos =0;
 	BufferedImage objeto;
 

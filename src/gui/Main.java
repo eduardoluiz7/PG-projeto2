@@ -19,7 +19,6 @@ import javax.swing.border.EmptyBorder;
 import atributos.Camera;
 import atributos.Iluminacao;
 import atributos.Objeto;
-import atributos.Plano;
 
 public class Main extends JFrame {
 	int ResX = 640;
@@ -45,7 +44,7 @@ public class Main extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Define tamanho da janela
-		setBounds(100, 100, 341, 480);
+		setBounds(100, 100, 341, 414);
         painel = new JPanel();
 		//getContentPane().add(painel);
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -54,34 +53,34 @@ public class Main extends JFrame {
 
 		txtObjeto = new JTextField("Objeto");
 		txtObjeto.setFont(new Font("Century Gothic", Font.PLAIN, 14));
-		txtObjeto.setBounds(80, 108, 120, 25);
+		txtObjeto.setBounds(44, 108, 130, 25);
 		painel.add(txtObjeto);
 
 		txtCamera = new JTextField("Camera");
 		txtCamera.setFont(new Font("Century Gothic", Font.PLAIN, 14));
-		txtCamera.setBounds(80, 140, 120, 25);
+		txtCamera.setBounds(44, 163, 131, 25);
 		painel.add(txtCamera);
 
 		txtIluminacao = new JTextField("Ilumina\u00E7\u00E3o");
 		txtIluminacao.setFont(new Font("Century Gothic", Font.PLAIN, 14));
-		txtIluminacao.setBounds(80, 170, 120, 25);
+		txtIluminacao.setBounds(44, 224, 131, 25);
 		painel.add(txtIluminacao);
 
 		fieldPlanoX = new JTextField("1000");
-		fieldPlanoX.setBounds(80, 200, 30, 25);
+		fieldPlanoX.setBounds(88, 263, 30, 25);
 		painel.add(fieldPlanoX);
 
 		JLabel labelX = new JLabel(" x ");
-		labelX.setBounds(110, 203, 80, 20);
+		labelX.setBounds(118, 266, 80, 20);
 		labelX.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		painel.add(labelX);
 
 		fieldPlanoY = new JTextField("1000");
-		fieldPlanoY.setBounds(130, 200, 30, 25);
+		fieldPlanoY.setBounds(138, 263, 30, 25);
 		painel.add(fieldPlanoY);
 
 		labelX = new JLabel("pxls");
-		labelX.setBounds(165, 203, 80, 20);
+		labelX.setBounds(173, 266, 80, 20);
 		labelX.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		painel.add(labelX);
 
@@ -98,12 +97,12 @@ public class Main extends JFrame {
 				}
 			}
 		});
-		btn.setBounds(43, 236, 120, 23);
+		btn.setBounds(44, 301, 120, 23);
 		painel.add(btn);
 		
 		JButton selecionarObjeto = new JButton("Selecionar");
 		selecionarObjeto.setFont(new Font("Century Gothic", Font.PLAIN, 13));
-		selecionarObjeto.setBounds(212, 109, 98, 25);
+		selecionarObjeto.setBounds(186, 109, 110, 25);
 		painel.add(selecionarObjeto);
 		selecionarObjeto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -128,7 +127,7 @@ public class Main extends JFrame {
 		
 		selecionarCamera = new JButton("Selecionar");
 		selecionarCamera.setFont(new Font("Century Gothic", Font.PLAIN, 13));
-		selecionarCamera.setBounds(212, 141, 98, 25);
+		selecionarCamera.setBounds(187, 164, 109, 25);
 		painel.add(selecionarCamera);
 		selecionarCamera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -153,7 +152,7 @@ public class Main extends JFrame {
 		
 		selecionarIluminacao = new JButton("Selecionar");
 		selecionarIluminacao.setFont(new Font("Century Gothic", Font.PLAIN, 13));
-		selecionarIluminacao.setBounds(212, 171, 98, 25);
+		selecionarIluminacao.setBounds(187, 225, 109, 25);
 		painel.add(selecionarIluminacao);
 		selecionarIluminacao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -176,17 +175,32 @@ public class Main extends JFrame {
 		});
 		
 		JLabel lblObjetoTransparente = new JLabel("Objeto Transparente");
-		lblObjetoTransparente.setFont(new Font("Century Gothic", Font.BOLD, 27));
-		lblObjetoTransparente.setBounds(31, 24, 279, 53);
+		lblObjetoTransparente.setFont(new Font("Century Gothic", Font.BOLD, 30));
+		lblObjetoTransparente.setBounds(12, 13, 299, 63);
 		painel.add(lblObjetoTransparente);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.setFont(new Font("Century Gothic", Font.PLAIN, 13));
-		btnAtualizar.setBounds(175, 236, 120, 23);
+		btnAtualizar.setBounds(176, 301, 120, 23);
 		painel.add(btnAtualizar);
+		
+		JLabel lblIluminao = new JLabel("Ilumina\u00E7\u00E3o:");
+		lblIluminao.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		lblIluminao.setBounds(12, 201, 80, 16);
+		painel.add(lblIluminao);
+		
+		JLabel lblCmera = new JLabel("C\u00E2mera:");
+		lblCmera.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		lblCmera.setBounds(12, 137, 80, 25);
+		painel.add(lblCmera);
+		
+		JLabel lblObjeto = new JLabel("Objeto:");
+		lblObjeto.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		lblObjeto.setBounds(12, 81, 80, 25);
+		painel.add(lblObjeto);
 
 		//Cria-se uma Janela para o objeto apresentado por Phong.
-		phong = new TelaG(415, 100, ResX, ResY);
+		phong = new TelaG(500, 100, ResX, ResY);
 		phong.setVisible(true);
 	}
 
@@ -229,13 +243,6 @@ public class Main extends JFrame {
 		String iluminacaoName = txtIluminacao.getText();
 		Iluminacao.initIluminacao("C:/Users/eduar/git/PG-projeto2/src/entradas/"+iluminacaoName+".txt");
 		
-
-		// Carrega plano
-		String planoBase = fieldPlanoX.getText();
-		String planoAltura = fieldPlanoY.getText();
-		Plano.setPlano(planoBase, planoAltura);
-		System.err.println("3 -> Plano lido e inicializado");
-
 	}
 	/*
      * Método auxiliar para verificar a extensão dos arquivos
@@ -250,5 +257,4 @@ public class Main extends JFrame {
         }
         return ext;
     }
-
 }
