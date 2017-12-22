@@ -211,7 +211,7 @@ public class Main extends JFrame {
 		JButton btnNewButton = new JButton("UP");  //gira para cima
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Camera.girarEixoY(taxaDeGiro);
+				Camera.girarEixoX(taxaDeGiro);
 				iniciar();
 			}
 		});
@@ -221,7 +221,7 @@ public class Main extends JFrame {
 		JButton btnRight = new JButton("R"); //gira para direita
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Camera.girarEixoX(taxaDeGiro);
+				Camera.girarEixoY(taxaDeGiro);
 				iniciar();
 			}
 		});
@@ -231,7 +231,7 @@ public class Main extends JFrame {
 		JButton btnL = new JButton("L"); //gira para esquerda
 		btnL.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Camera.girarEixoX(-taxaDeGiro);
+				Camera.girarEixoY(-taxaDeGiro);
 				iniciar();
 			}
 		});
@@ -241,7 +241,7 @@ public class Main extends JFrame {
 		JButton btnDown = new JButton("Down"); //gira para baixo
 		btnDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Camera.girarEixoY(-taxaDeGiro);
+				Camera.girarEixoX(-taxaDeGiro);
 				iniciar();
 			}
 		});

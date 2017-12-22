@@ -18,6 +18,10 @@ import atributos.Triangulo;
  *
  */
 public class TelaG extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public double[][] z_buffer;
 	public ArrayList<Triangulo> t;
 	public ArrayList<Triangulo> t2;
@@ -28,7 +32,6 @@ public class TelaG extends JFrame {
 
 	public TelaG(int x, int y, int resX, int resY){
 		super("Projeto 2 - Objeto transparente");
-
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(x, y, resX, resY);
 		this.ResX = resX;
