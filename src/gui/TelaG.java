@@ -84,7 +84,6 @@ public class TelaG extends JFrame {
 							b = (int) Math.round(I.z); 
 							qtdPontos++;
 							int rgb = new Color(r,g,b).getRGB();
-							//int rgb = Color.GREEN.getRGB();
 							objeto.setRGB(x, y, rgb);
 						}
 					}

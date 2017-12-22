@@ -6,7 +6,7 @@ public class Ponto3D {
 	public Ponto3D normal;
 	public boolean is3D;
 	public Ponto3D color;
-	public Ponto3D(){}
+	
 
 	// Construtor 3D
 	public Ponto3D(double x, double y, double z, Ponto3D normal, Ponto3D color) {
@@ -76,8 +76,6 @@ public class Ponto3D {
 			color = this.color.add(p2.color);
 		}
 		
-		//if (color != null) color.trucateColor();
-
 		p = new Ponto3D(x, y, z, normal,color);
 		return p;
 	}
@@ -174,15 +172,9 @@ public class Ponto3D {
 	
 	public void truncateXYZ(){
 		Ponto3D I = this;
-		
 		I.x = Math.min(255, I.x);
-//		I.x = Math.max(0, I.x);
-		
 		I.y = Math.min(255, I.y);
-//		I.y = Math.max(0, I.y);
-		
 		I.z = Math.min(255, I.z);
-//		I.z = Math.max(0, I.z);
 
 	}
 	
