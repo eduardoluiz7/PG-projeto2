@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -208,7 +209,7 @@ public class Main extends JFrame {
 		lblObjeto.setBounds(12, 81, 80, 25);
 		painel.add(lblObjeto);
 		
-		JButton btnNewButton = new JButton("UP");  //gira para cima
+		JButton btnNewButton = new JButton("y");  //gira para cima
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Camera.girarEixoX(taxaDeGiro);
@@ -218,7 +219,7 @@ public class Main extends JFrame {
 		btnNewButton.setBounds(128, 326, 59, 25);
 		painel.add(btnNewButton);
 		
-		JButton btnRight = new JButton("R"); //gira para direita
+		JButton btnRight = new JButton("x"); //gira para direita
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Camera.girarEixoY(taxaDeGiro);
@@ -228,7 +229,7 @@ public class Main extends JFrame {
 		btnRight.setBounds(187, 350, 47, 25);
 		painel.add(btnRight);
 		
-		JButton btnL = new JButton("L"); //gira para esquerda
+		JButton btnL = new JButton("-x"); //gira para esquerda
 		btnL.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Camera.girarEixoY(-taxaDeGiro);
@@ -238,14 +239,14 @@ public class Main extends JFrame {
 		btnL.setBounds(81, 350, 47, 25);
 		painel.add(btnL);
 		
-		JButton btnDown = new JButton("Down"); //gira para baixo
+		JButton btnDown = new JButton("-y"); //gira para baixo
 		btnDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Camera.girarEixoX(-taxaDeGiro);
 				iniciar();
 			}
 		});
-		btnDown.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		btnDown.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnDown.setBounds(128, 350, 58, 25);
 		painel.add(btnDown);
 		
@@ -291,6 +292,7 @@ public class Main extends JFrame {
 		Camera.setIntervalos();
 		System.out.println("Variaveis manipuladas");
 		tela.scanLine3D();
+		tela.setBackground(Color.WHITE);
 		tela.repaint();
 		System.out.println("Cores Calculadas e Objeto pintado com phong");
 	}

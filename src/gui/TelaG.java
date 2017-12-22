@@ -113,7 +113,7 @@ public class TelaG extends JFrame {
 		for (int x=1;x<ResX;x++){
 			for (int y=1;y<ResY;y++){
 				if (z_buffer[x][y] == Double.MAX_VALUE && z_buffer[x][y+1] != Double.MAX_VALUE && z_buffer[x][y-1] != Double.MAX_VALUE){
-					int r,g,b,r2,g2,b2;
+					int r2,g2,b2;
 					Color color;
 					int rgb;
 					rgb= objeto.getRGB(x, y+1);
@@ -129,10 +129,6 @@ public class TelaG extends JFrame {
 					b2 += color.getBlue()/2;
 
 					rgb = objeto.getRGB(x, y);
-					r = color.getRed();
-					g = color.getGreen();
-					b = color.getBlue();
-
 					color = new Color(r2,g2,b2);
 					rgb = color.getRGB();
 
