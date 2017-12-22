@@ -20,7 +20,7 @@ public class Iluminacao {
 	public static double ks; // - coeficiente especular
 	public static Ponto3D Il; // - cor da fonte de luz
 	public static double n; // - constante de rugosidade
-	
+	public static double kt=0; // coeficiente de transparência;
 	public static void initIluminacao(String filepath) throws IOException {
 		// Ler arquivo
 		File iluminacaoEntrada = new File(filepath);

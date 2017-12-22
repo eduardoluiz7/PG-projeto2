@@ -8,6 +8,7 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 
 import atributos.Camera;
+import atributos.Iluminacao;
 import atributos.Ponto3D;
 import atributos.Triangulo;
 
@@ -32,9 +33,7 @@ public class TelaG extends JFrame {
 		setBounds(x, y, resX, resY);
 		this.ResX = resX;
 		this.ResY = resY;
-
 		z_buffer = new double[ResX+1][ResY+1];
-
 	}
 
 	@Override
@@ -75,6 +74,7 @@ public class TelaG extends JFrame {
 						Ponto3D p = v1.multiply(bary[0]).add(v2.multiply(bary[1])).add(v3.multiply(bary[2])); 
 
 						//System.out.println("x: "+pixel.x+" y: "+ pixel.y);
+					if(Iluminacao.kt==0) {	
 						if(x <= ResX && y <= ResY && z_buffer[x][y]>p.z && p.z>0){
 							z_buffer[x][y] = p.z;
 							Ponto3D I = p.getColor();
@@ -87,7 +87,21 @@ public class TelaG extends JFrame {
 							objeto.setRGB(x, y, rgb);
 						}
 					}
+					/*
+					else {
+						Ponto3D I = (p.getColor().multiply(1-Iluminacao.kt));
+						double corob = objeto.getRGB(x, y)*Iluminacao.kt;
+						int r,g,b;
+						r = (int) Math.round(I.x); 
+						g = (int) Math.round(I.y); 
+						b = (int) Math.round(I.z);
+						qtdPontos++;
+						int rgb = new Color(r,g,b).getRGB();
+						objeto.setRGB(x, y, rgb+ (int)corob);
+					}
+					*/
 				}
+					}
 			}
 		}
 	}
@@ -99,7 +113,6 @@ public class TelaG extends JFrame {
 					int r,g,b,r2,g2,b2;
 					Color color;
 					int rgb;
-
 					rgb= objeto.getRGB(x, y+1);
 					color = new Color(rgb);
 					r2 = color.getRed()/2;

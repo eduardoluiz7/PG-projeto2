@@ -6,7 +6,6 @@ public class Ponto3D {
 	public Ponto3D normal;
 	public boolean is3D;
 	public Ponto3D color;
-	
 
 	// Construtor 3D
 	public Ponto3D(double x, double y, double z, Ponto3D normal, Ponto3D color) {
@@ -166,7 +165,6 @@ public class Ponto3D {
 		Ponto3D I = Iluminacao.Ia.multiply(Iluminacao.ka).add(Id).add(Ie);//.multiply(255);
 		
 		I.truncateXYZ();
-		
 		return I;
 	}
 	
@@ -177,7 +175,4 @@ public class Ponto3D {
 		I.z = Math.min(255, I.z);
 
 	}
-	
-
-
 }

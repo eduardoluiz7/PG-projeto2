@@ -57,7 +57,7 @@ public class Main extends JFrame {
 		super("Projeto 2 - Processamento Gráfico");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 341, 454);
+		setBounds(100, 100, 341, 486);
         painel = new JPanel();
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(painel);
@@ -96,7 +96,7 @@ public class Main extends JFrame {
 				}
 			}
 		});
-		btn.setBounds(32, 359, 120, 23);
+		btn.setBounds(32, 403, 120, 23);
 		painel.add(btn);
 		/*
 		 * Botões de selecionar objeto, camera e iluminação + acões do seletor de arquivos
@@ -190,7 +190,7 @@ public class Main extends JFrame {
 			}
 		});
 		btnAtualizar.setFont(new Font("Century Gothic", Font.PLAIN, 13));
-		btnAtualizar.setBounds(176, 359, 120, 23);
+		btnAtualizar.setBounds(176, 403, 120, 23);
 		painel.add(btnAtualizar);
 		
 		JLabel lblIluminao = new JLabel("Ilumina\u00E7\u00E3o:");
@@ -215,7 +215,7 @@ public class Main extends JFrame {
 				iniciar();
 			}
 		});
-		btnNewButton.setBounds(128, 282, 59, 25);
+		btnNewButton.setBounds(128, 326, 59, 25);
 		painel.add(btnNewButton);
 		
 		JButton btnRight = new JButton("R"); //gira para direita
@@ -225,7 +225,7 @@ public class Main extends JFrame {
 				iniciar();
 			}
 		});
-		btnRight.setBounds(187, 306, 47, 25);
+		btnRight.setBounds(187, 350, 47, 25);
 		painel.add(btnRight);
 		
 		JButton btnL = new JButton("L"); //gira para esquerda
@@ -235,7 +235,7 @@ public class Main extends JFrame {
 				iniciar();
 			}
 		});
-		btnL.setBounds(81, 306, 47, 25);
+		btnL.setBounds(81, 350, 47, 25);
 		painel.add(btnL);
 		
 		JButton btnDown = new JButton("Down"); //gira para baixo
@@ -246,30 +246,30 @@ public class Main extends JFrame {
 			}
 		});
 		btnDown.setFont(new Font("Tahoma", Font.PLAIN, 8));
-		btnDown.setBounds(128, 306, 58, 25);
+		btnDown.setBounds(128, 350, 58, 25);
 		painel.add(btnDown);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(44, 262, 220, 2);
+		separator.setBounds(44, 306, 220, 2);
 		painel.add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(44, 344, 220, 2);
+		separator_1.setBounds(44, 388, 220, 2);
 		painel.add(separator_1);
 		
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setOrientation(SwingConstants.VERTICAL);
-		separator_2.setBounds(44, 262, 2, 84);
+		separator_2.setBounds(44, 306, 2, 84);
 		painel.add(separator_2);
 		
 		JSeparator separator_3 = new JSeparator();
 		separator_3.setOrientation(SwingConstants.VERTICAL);
-		separator_3.setBounds(262, 262, 2, 84);
+		separator_3.setBounds(262, 306, 2, 84);
 		painel.add(separator_3);
 		
 		JLabel lblGirar = new JLabel("  Girar");
 		lblGirar.setFont(new Font("Century Gothic", Font.PLAIN, 15));
-		lblGirar.setBounds(44, 262, 56, 31);
+		lblGirar.setBounds(44, 306, 56, 31);
 		painel.add(lblGirar);
 
 		//Cria-se uma Janela para o objeto apresentado por tela.
