@@ -1,5 +1,4 @@
 package api;
-
 import atributos.Ponto3D;
 
 public class ProjecaoPontos extends MatrixUtil{
@@ -24,14 +23,4 @@ public class ProjecaoPontos extends MatrixUtil{
 		
 		return p2;
 	}
-	
-	//metodo inutil VV
-	public static boolean isOnWindow(Ponto3D p, double d, double hx, double hy){
-		//fiz uma mudan�a de acordo com romero sobre a janela de visualiza��o
-		return (p.x<=hx && p.x>=-hx && p.y<=hy && p.y>=-hy);
-	}
-	
-	
-	
-	
 }

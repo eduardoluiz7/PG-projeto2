@@ -2,7 +2,6 @@ package api;
 import atributos.Ponto3D;
 import atributos.Triangulo;
 
-
 public class Util {
 
 	public static double[][] alfa;

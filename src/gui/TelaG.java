@@ -40,17 +40,13 @@ public class TelaG extends JFrame {
 
 	public void scanLine3D(){
 		objeto = new BufferedImage(ResX+1, ResY+1, BufferedImage.TYPE_INT_ARGB); 
-		System.out.println("ook aqui");
 		this.t = Camera.triangulosConvertidos;
 		this.t2 = Camera.triangulos2D;
-		System.out.println("ook aqui");
 		for (double[] row: z_buffer)
 			Arrays.fill(row, Double.MAX_VALUE);
-		System.out.println("ook aqui");
 		for(int i=0;i<t2.size();i++){
 			pinte(Camera.intervalos.get(i),t.get(i).indice, i);
 		}
-		System.out.println("ook aqui");
 		fix();
 
 
