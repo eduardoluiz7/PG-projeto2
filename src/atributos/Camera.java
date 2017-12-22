@@ -5,10 +5,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import api.ProjecaoPontos;
 import api.Util;
 
+/**
+ * Classe para manipulação dos atributos de camera
+ * @author Eduardo Luiz - els6
+ *
+ */
 public class Camera {
 	public static Ponto3D C; // - Foco da camera
 	public static Ponto3D N; // - Vetor N antes de normalizar
@@ -25,37 +29,46 @@ public class Camera {
 	public static ArrayList<Ponto3D> vertices2DMapeados;
 	public static ArrayList<Ponto3D[][]> intervalos;
 
+	/**
+	 * Método que lê os dados do arquivo fornecido
+	 * @param filepath
+	 * @throws IOException
+	 */
 	public static void initCamera(String filepath) throws IOException{
 		//cameraName = scan.next();
 		File camera = new File(filepath);
-		System.out.println("----->"+camera.getPath());
-		BufferedReader reader = new BufferedReader(new FileReader(camera));
-		reader.mark(2000);
+		BufferedReader leitor = new BufferedReader(new FileReader(camera));
+		leitor.mark(2000);
 		//Vetor C
 		//extract extrai 3 doubles de uma string e devolve um array com eles
-		double[] xyz = Util.extract(reader.readLine());
+		double[] xyz = Util.extract(leitor.readLine());
 		Camera.C = new Ponto3D(xyz[0],xyz[1],xyz[2]);
 		System.out.println("C " + C );
 
 		//Vetor N
-		xyz = Util.extract(reader.readLine());
+		xyz = Util.extract(leitor.readLine());
 		Camera.N = new Ponto3D(xyz[0],xyz[1],xyz[2]);
 		System.out.println("N entrada: " + N);
 
 		//Vetor V
-		xyz = Util.extract(reader.readLine());
+		xyz = Util.extract(leitor.readLine());
 		Camera.V = new Ponto3D(xyz[0],xyz[1],xyz[2]);
 		System.out.println("V entrada: " + V);
 
 		//d, hx, hy
-		xyz = Util.extract(reader.readLine());
+		xyz = Util.extract(leitor.readLine());
 		d = xyz[0];
 		hx = xyz[1];
 		hy = xyz[2];
 
-		reader.reset();
+		leitor.reset();
+		leitor.close();
 	}
 
+	/**
+	 * Método que realiza a ortogonalização e normalização de N e V
+	 * E calcula o vetor U
+	 */
 	public static void setCamera() {
 		//processo gramSchmidt:
 
@@ -63,19 +76,15 @@ public class Camera {
 
 		Camera.Vo = Util.ortogonalizar(Camera.V, Camera.N);
 		Camera.No = Camera.N.normalize();
-
 		System.out.println("N ortogonalizado: " + No);
 
 		// Normalizando V
 
 		Camera.Vn=Camera.Vo.normalize();
-
 		System.out.println("V ortogonalizado e normalizado: " + Vn);
 
 		//gerando U 
-
 		Camera.U = Camera.No.produtoVetorial(Camera.Vn);
-		
 		//Setando matriz alfa
 		Util.setAlfa(Camera.U,Camera.Vn, Camera.No);
 	}
@@ -98,12 +107,12 @@ public class Camera {
 
 			// calculam-se as projeÃ§Ãµes dos seus vÃ©rtices,
 			vertices2D.add(ProjecaoPontos.projetar2D(p, Camera.d, Camera.hx, Camera.hy));
-			//System.out.println("lendo ponto "+i+" convertido em 2D: "+vertices2D.get(vertices2D.size()-1));
+			System.out.println("lendo ponto "+i+" convertido em 2D: "+vertices2D.get(vertices2D.size()-1));
 			//Calcula-se o mapeamento dele para o frame
 
 			Ponto3D u = ProjecaoPontos.map2Screen(vertices2D.get(vertices2D.size()-1), resX, resY);
 			vertices2DMapeados.add(u);
-			//System.out.println("lendo ponto "+i+" convertido em 2D e mapeado para o frame: "+vertices2DMapeados.get(vertices2D.size()-1));
+			System.out.println("lendo ponto "+i+" convertido em 2D e mapeado para o frame: "+vertices2DMapeados.get(vertices2D.size()-1));
 		}
 
 		ArrayList<Triangulo> triangulos = Objeto.triangulos;
@@ -151,6 +160,23 @@ public class Camera {
 		}
 	}
 
+	/*
+	 * Permite girar a camera em torno do eixoY
+	 */
+	public static void girarEixoY(double taxaGiro){
+		Util.giroEmY(Camera.V, taxaGiro);
+		Util.giroEmY(Camera.N, taxaGiro);
+		Util.giroEmY(Camera.C, taxaGiro);
+	}
+	/*
+	 * Permite girar a camera em torno do eixoX
+	 */
+	public static void girarEixoX(double taxaGiro){
+		Util.giroEmX(Camera.V, taxaGiro);
+		Util.giroEmX(Camera.N, taxaGiro);
+		Util.giroEmX(Camera.C, taxaGiro);
+	}
+	
 	public static void setIntervalos(){
 		intervalos = new ArrayList<Ponto3D[][]>();
 		int size = triangulos2D.size();

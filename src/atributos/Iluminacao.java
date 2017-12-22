@@ -6,6 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import api.Util;
 
+/**
+ * Classe que lê e manipula os dados de iluminação
+ * @author Eduardo Luiz - els6
+ *
+ */
 public class Iluminacao {
 	public static Ponto3D Pl; // - Coordenadas do ponto de luz
 	public static double ka; // - reflexao ambiental

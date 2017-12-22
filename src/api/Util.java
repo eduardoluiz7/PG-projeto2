@@ -210,7 +210,25 @@ public class Util {
 
 		return matriz;
 	}
-	 
+	
+	public static void giroEmY(Ponto3D p, double taxaDeGiro){
+		taxaDeGiro = Math.toRadians(taxaDeGiro);
+		double x,z;
+		x = p.x * Math.cos(taxaDeGiro) + p.z * -Math.sin(taxaDeGiro);
+		z = p.x * Math.sin(taxaDeGiro) + p.z * Math.cos(taxaDeGiro);
+		p.x = x;
+		p.z = z;
+	}
+	
+	public static void giroEmX(Ponto3D p, double taxaDeGiro){
+		taxaDeGiro = Math.toRadians(taxaDeGiro);
+		double y,z;
+		y = p.y * Math.cos(taxaDeGiro) + p.z * -Math.sin(taxaDeGiro);
+		z = p.y * Math.sin(taxaDeGiro) + p.z * Math.cos(taxaDeGiro);
+		p.y = y;
+		p.z = z;
+	}
+	
 	public static Ponto3D findBaryNormal(Triangulo tri2D, Triangulo tri3D, Ponto3D p) {
 	    Ponto3D temp1, vetor;
 	    double alfa, beta, gama;

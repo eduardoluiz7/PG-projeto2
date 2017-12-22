@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -19,12 +18,22 @@ import javax.swing.border.EmptyBorder;
 import atributos.Camera;
 import atributos.Iluminacao;
 import atributos.Objeto;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
+/**
+ * @author Eduardo Luiz - els6
+ * Tela principal
+ */
 public class Main extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	int ResX = 640;
 	int ResY = 480;
 
-	//Atributos para interface grafica
+	//Atributos
 	JPanel painel;
 	JTextField txtObjeto;
 	JTextField txtCamera;
@@ -34,22 +43,22 @@ public class Main extends JFrame {
 	String objetPath = "C:/Users/eduar/git/PG-projeto2/src/entradas/objeto.byu";
 	String cameraPath = "C:/Users/eduar/git/PG-projeto2/src/entradas/camera.cfg";
 	String iluminacaoPath = "C:/Users/eduar/git/PG-projeto2/src/entradas/iluminacao.txt";
-	boolean camera, objt, iluminacao;
+	double taxaDeGiro = 30;
 
-	//Janela com o objeto
-	TelaG phong;
+	//Tela do desenho
+	TelaG tela;
 	private JButton selecionarCamera;
 	private JButton selecionarIluminacao;
 
+	/**
+	 * Construtor da classe
+	 */
 	public Main(){
-		// Define nome da janela
 		super("Projeto 2 - Processamento Gráfico");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// Define tamanho da janela
-		setBounds(100, 100, 341, 414);
+		setBounds(100, 100, 341, 454);
         painel = new JPanel();
-		//getContentPane().add(painel);
 		painel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(painel);
 		painel.setLayout(null);
@@ -68,7 +77,9 @@ public class Main extends JFrame {
 		txtIluminacao.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		txtIluminacao.setBounds(44, 224, 131, 25);
 		painel.add(txtIluminacao);
-
+		
+		
+		//funcoes do botão ok
 		btn = new JButton("OK");
 		btn.setFont(new Font("Century Gothic", Font.PLAIN, 13));
 		btn.addActionListener(new ActionListener() {
@@ -78,16 +89,18 @@ public class Main extends JFrame {
 					Objeto.setObjeto(objetPath);
 					Camera.initCamera(cameraPath);
 					Iluminacao.initIluminacao(iluminacaoPath);
-					setup();
+					iniciar();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
-		btn.setBounds(44, 301, 120, 23);
+		btn.setBounds(32, 359, 120, 23);
 		painel.add(btn);
-		
+		/*
+		 * Botões de selecionar objeto, camera e iluminação + acões do seletor de arquivos
+		 */
 		JButton selecionarObjeto = new JButton("Selecionar");
 		selecionarObjeto.setFont(new Font("Century Gothic", Font.PLAIN, 13));
 		selecionarObjeto.setBounds(186, 109, 110, 25);
@@ -127,8 +140,7 @@ public class Main extends JFrame {
 			    }
 			}
 		});
-		
-		
+
 		selecionarIluminacao = new JButton("Selecionar");
 		selecionarIluminacao.setFont(new Font("Century Gothic", Font.PLAIN, 13));
 		selecionarIluminacao.setBounds(187, 225, 109, 25);
@@ -159,6 +171,9 @@ public class Main extends JFrame {
 		lblObjetoTransparente.setBounds(12, 13, 299, 63);
 		painel.add(lblObjetoTransparente);
 		
+		/*
+		 * botão para atualizar tela 
+		 */
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -166,7 +181,7 @@ public class Main extends JFrame {
 					Objeto.setObjeto(objetPath);
 					Camera.initCamera(cameraPath);
 					Iluminacao.initIluminacao(iluminacaoPath);
-					setup();
+					iniciar();
 				}catch(IOException e) {
 					JOptionPane.showMessageDialog(null, "Entradas inválidas!");
 				}catch(Exception e) {
@@ -175,7 +190,7 @@ public class Main extends JFrame {
 			}
 		});
 		btnAtualizar.setFont(new Font("Century Gothic", Font.PLAIN, 13));
-		btnAtualizar.setBounds(176, 301, 120, 23);
+		btnAtualizar.setBounds(176, 359, 120, 23);
 		painel.add(btnAtualizar);
 		
 		JLabel lblIluminao = new JLabel("Ilumina\u00E7\u00E3o:");
@@ -192,34 +207,92 @@ public class Main extends JFrame {
 		lblObjeto.setFont(new Font("Century Gothic", Font.PLAIN, 13));
 		lblObjeto.setBounds(12, 81, 80, 25);
 		painel.add(lblObjeto);
+		
+		JButton btnNewButton = new JButton("UP");  //gira para cima
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Camera.girarEixoY(taxaDeGiro);
+				iniciar();
+			}
+		});
+		btnNewButton.setBounds(128, 282, 59, 25);
+		painel.add(btnNewButton);
+		
+		JButton btnRight = new JButton("R"); //gira para direita
+		btnRight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Camera.girarEixoX(taxaDeGiro);
+				iniciar();
+			}
+		});
+		btnRight.setBounds(187, 306, 47, 25);
+		painel.add(btnRight);
+		
+		JButton btnL = new JButton("L"); //gira para esquerda
+		btnL.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Camera.girarEixoX(-taxaDeGiro);
+				iniciar();
+			}
+		});
+		btnL.setBounds(81, 306, 47, 25);
+		painel.add(btnL);
+		
+		JButton btnDown = new JButton("Down"); //gira para baixo
+		btnDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Camera.girarEixoY(-taxaDeGiro);
+				iniciar();
+			}
+		});
+		btnDown.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		btnDown.setBounds(128, 306, 58, 25);
+		painel.add(btnDown);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(44, 262, 220, 2);
+		painel.add(separator);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(44, 344, 220, 2);
+		painel.add(separator_1);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setOrientation(SwingConstants.VERTICAL);
+		separator_2.setBounds(44, 262, 2, 84);
+		painel.add(separator_2);
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setOrientation(SwingConstants.VERTICAL);
+		separator_3.setBounds(262, 262, 2, 84);
+		painel.add(separator_3);
+		
+		JLabel lblGirar = new JLabel("  Girar");
+		lblGirar.setFont(new Font("Century Gothic", Font.PLAIN, 15));
+		lblGirar.setBounds(44, 262, 56, 31);
+		painel.add(lblGirar);
 
-		//Cria-se uma Janela para o objeto apresentado por Phong.
-		phong = new TelaG(500, 100, ResX, ResY);
-		phong.setVisible(true);
+		//Cria-se uma Janela para o objeto apresentado por tela.
+		tela = new TelaG(500, 100, ResX, ResY);
+		tela.setVisible(true);
 	}
-
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
-	}
-
+	
 	public static void main(String[] args) {
 		Main frame = new Main();
 		frame.setVisible(true);
 	}
-
-	public void setup(){
+	/**
+	 * inicia o calculo das cores e pinta o objeto na tela
+	 */
+	public void iniciar(){
 		Camera.setCamera();
 		Camera.convertObject(ResX, ResY);
-
 		Iluminacao.setIluminacao();
-
 		Camera.setIntervalos();
-		System.out.println("-> Variaveis manipuladas");
-
-		phong.scanLine3D();
-		phong.repaint();
-		System.out.println("Cores Calculadas e Objeto pintado com Phong");
+		System.out.println("Variaveis manipuladas");
+		tela.scanLine3D();
+		tela.repaint();
+		System.out.println("Cores Calculadas e Objeto pintado com phong");
 	}
 
 	/*

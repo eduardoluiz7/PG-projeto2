@@ -11,12 +11,17 @@ import atributos.Camera;
 import atributos.Ponto3D;
 import atributos.Triangulo;
 
+/**
+ * Tela onde o objeto será pintado
+ * @author Eduardo Luiz - els6
+ *
+ */
 public class TelaG extends JFrame {
 	public double[][] z_buffer;
 	public ArrayList<Triangulo> t;
 	public ArrayList<Triangulo> t2;
-	public int ResX = 640;
-	public int ResY = 640;
+	public int ResX = 1000;
+	public int ResY = 1000;
 	int qtdPontos =0;
 	BufferedImage objeto;
 
@@ -48,8 +53,6 @@ public class TelaG extends JFrame {
 			pinte(Camera.intervalos.get(i),t.get(i).indice, i);
 		}
 		fix();
-
-
 	}
 
 	private void pinte(Ponto3D[][] intervalos, int indice, int k){
