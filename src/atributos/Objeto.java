@@ -43,6 +43,6 @@ public class Objeto {
 			Triangulo t = new Triangulo(vertices.get(v1),vertices.get(v2),vertices.get(v3),i);
 			triangulos.add(t);
 		}
-		scan.close();
+		scan.reset();
 	}
 }

@@ -29,9 +29,12 @@ public class Main extends JFrame {
 	JTextField txtObjeto;
 	JTextField txtCamera;
 	JTextField txtIluminacao;
-	JTextField fieldPlanoX;
-	JTextField fieldPlanoY;
 	JButton btn;
+	JFileChooser seletorDeArquivos;
+	String objetPath = "C:/Users/eduar/git/PG-projeto2/src/entradas/objeto.byu";
+	String cameraPath = "C:/Users/eduar/git/PG-projeto2/src/entradas/camera.cfg";
+	String iluminacaoPath = "C:/Users/eduar/git/PG-projeto2/src/entradas/iluminacao.txt";
+	boolean camera, objt, iluminacao;
 
 	//Janela com o objeto
 	TelaG phong;
@@ -51,38 +54,20 @@ public class Main extends JFrame {
 		setContentPane(painel);
 		painel.setLayout(null);
 
-		txtObjeto = new JTextField("Objeto");
+		txtObjeto = new JTextField("Objeto.byu");
 		txtObjeto.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		txtObjeto.setBounds(44, 108, 130, 25);
 		painel.add(txtObjeto);
 
-		txtCamera = new JTextField("Camera");
+		txtCamera = new JTextField("Camera.cfg");
 		txtCamera.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		txtCamera.setBounds(44, 163, 131, 25);
 		painel.add(txtCamera);
 
-		txtIluminacao = new JTextField("Ilumina\u00E7\u00E3o");
+		txtIluminacao = new JTextField("Iluminacao.txt");
 		txtIluminacao.setFont(new Font("Century Gothic", Font.PLAIN, 14));
 		txtIluminacao.setBounds(44, 224, 131, 25);
 		painel.add(txtIluminacao);
-
-		fieldPlanoX = new JTextField("1000");
-		fieldPlanoX.setBounds(88, 263, 30, 25);
-		painel.add(fieldPlanoX);
-
-		JLabel labelX = new JLabel(" x ");
-		labelX.setBounds(118, 266, 80, 20);
-		labelX.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		painel.add(labelX);
-
-		fieldPlanoY = new JTextField("1000");
-		fieldPlanoY.setBounds(138, 263, 30, 25);
-		painel.add(fieldPlanoY);
-
-		labelX = new JLabel("pxls");
-		labelX.setBounds(173, 266, 80, 20);
-		labelX.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		painel.add(labelX);
 
 		btn = new JButton("OK");
 		btn.setFont(new Font("Century Gothic", Font.PLAIN, 13));
@@ -90,6 +75,9 @@ public class Main extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+					Objeto.setObjeto(objetPath);
+					Camera.initCamera(cameraPath);
+					Iluminacao.initIluminacao(iluminacaoPath);
 					setup();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
@@ -111,12 +99,7 @@ public class Main extends JFrame {
 			    if(returnVal == JFileChooser.APPROVE_OPTION) { 
 			    	if(getExtension(seletorDeArquivos.getSelectedFile()).equals("byu")){
 			    		txtObjeto.setText(seletorDeArquivos.getSelectedFile().getName());
-			    		
-			    		try {
-			    			Objeto.setObjeto(seletorDeArquivos.getSelectedFile().getAbsolutePath()+"");
-			    		} catch (IOException e) {
-			    			JOptionPane.showMessageDialog(null, "Objeto inválido!");
-			    		}
+			    			objetPath = seletorDeArquivos.getSelectedFile().getAbsolutePath()+"";
 			    			System.out.println(seletorDeArquivos.getSelectedFile().getAbsolutePath()+"");
 			    	}else {
 			    		JOptionPane.showMessageDialog(null, "Objeto inválido! Insira arquivo do tipo 'byu'!");
@@ -136,11 +119,7 @@ public class Main extends JFrame {
 			    if(returnVal == JFileChooser.APPROVE_OPTION) { 
 			    	if(getExtension(seletorDeArquivos.getSelectedFile()).equals("cfg")){
 			    		txtCamera.setText(seletorDeArquivos.getSelectedFile().getName());
-			    		try {
-			    			Camera.initCamera(seletorDeArquivos.getSelectedFile().getAbsolutePath()+"");
-			    		} catch (IOException e) {
-			    			JOptionPane.showMessageDialog(null, "Câmera inválida!");
-			    		}
+			    			cameraPath = seletorDeArquivos.getSelectedFile().getAbsolutePath()+"";
 			    			System.out.println(seletorDeArquivos.getSelectedFile().getAbsolutePath()+"");
 			    	}else {
 			    		JOptionPane.showMessageDialog(null, "Câmera inválida! Insira arquivo do tipo 'cfg'!");
@@ -156,19 +135,20 @@ public class Main extends JFrame {
 		painel.add(selecionarIluminacao);
 		selecionarIluminacao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser seletorDeArquivos = new JFileChooser("C:\\Users\\eduar\\git\\PG-projeto2\\src\\entradas");
+				seletorDeArquivos = new JFileChooser("C:\\Users\\eduar\\git\\PG-projeto2\\src\\entradas");
 				int returnVal = seletorDeArquivos.showOpenDialog(painel);
 			    if(returnVal == JFileChooser.APPROVE_OPTION) { 
 			    	if(getExtension(seletorDeArquivos.getSelectedFile()).equals("txt")){
 			    		txtIluminacao.setText(seletorDeArquivos.getSelectedFile().getName());
 			    		try {
-			    			Iluminacao.initIluminacao(seletorDeArquivos.getSelectedFile().getAbsolutePath()+"");
-			    		} catch (IOException e) {
-			    			JOptionPane.showMessageDialog(null, "Objeto inválido!");
+			    			iluminacaoPath = seletorDeArquivos.getSelectedFile().getAbsolutePath()+"";
+			    			
+			    		} catch (Exception e) {
+			    			JOptionPane.showMessageDialog(null, "Iluminação inválida!");
 			    		}
 			    			System.out.println(seletorDeArquivos.getSelectedFile().getAbsolutePath()+"");
 			    	}else {
-			    		JOptionPane.showMessageDialog(null, "Objeto inválido! Insira arquivo do tipo 'txt'!");
+			    		JOptionPane.showMessageDialog(null, "Iluminação inválida! Insira arquivo do tipo 'txt'!");
 			    	}
 			    }
 			}
@@ -180,6 +160,20 @@ public class Main extends JFrame {
 		painel.add(lblObjetoTransparente);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Objeto.setObjeto(objetPath);
+					Camera.initCamera(cameraPath);
+					Iluminacao.initIluminacao(iluminacaoPath);
+					setup();
+				}catch(IOException e) {
+					JOptionPane.showMessageDialog(null, "Entradas inválidas!");
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		btnAtualizar.setFont(new Font("Century Gothic", Font.PLAIN, 13));
 		btnAtualizar.setBounds(176, 301, 120, 23);
 		painel.add(btnAtualizar);
@@ -228,22 +222,6 @@ public class Main extends JFrame {
 		System.out.println("Cores Calculadas e Objeto pintado com Phong");
 	}
 
-	public void readFiles() throws IOException{
-		// Carrega Objeto
-		String workingDir=System.getProperty("user.dir");
-
-		String objectName = txtObjeto.getText();
-		//"/home/wellington/Documents/UFPE/PG/Processamento-Grafico/P4-2/Java/src/Entradas/Cameras/calice2.cfg"
-		Objeto.setObjeto("C:/Users/eduar/git/PG-projeto2/src/entradas/Objetos/"+objectName+".byu");
-		System.out.println("1 -> Objeto lido e inicializado");
-
-		//"C:\\Users\\eduar\\git\\PG-projeto2\\src\\entradas"
-		
-		// Carrega IluminaÃ§Ã£o
-		String iluminacaoName = txtIluminacao.getText();
-		Iluminacao.initIluminacao("C:/Users/eduar/git/PG-projeto2/src/entradas/"+iluminacaoName+".txt");
-		
-	}
 	/*
      * Método auxiliar para verificar a extensão dos arquivos
      */  
@@ -251,7 +229,6 @@ public class Main extends JFrame {
         String ext = null;
         String s = f.getName();
         int i = s.lastIndexOf('.');
-
         if (i > 0 &&  i < s.length() - 1) {
             ext = s.substring(i+1).toLowerCase();
         }

@@ -18,7 +18,6 @@ public class Camera {
 	public static Ponto3D Vn; // - Vetor V apos ortonormalizar
 	public static Ponto3D U; // - Vetor U obtido atraves de N normalizado e V ortonormalizado (Gran-Schimit)
 	public static double d, hx, hy; // - Distancias entre a camera e o objeto
-
 	public static ArrayList<Ponto3D> verticesConvertidos;
 	public static ArrayList<Triangulo> triangulosConvertidos;
 	public static ArrayList<Triangulo> triangulos2D;
@@ -31,7 +30,7 @@ public class Camera {
 		File camera = new File(filepath);
 		System.out.println("----->"+camera.getPath());
 		BufferedReader reader = new BufferedReader(new FileReader(camera));
-
+		reader.mark(2000);
 		//Vetor C
 		//extract extrai 3 doubles de uma string e devolve um array com eles
 		double[] xyz = Util.extract(reader.readLine());
@@ -54,7 +53,7 @@ public class Camera {
 		hx = xyz[1];
 		hy = xyz[2];
 
-		reader.close();
+		reader.reset();
 	}
 
 	public static void setCamera() {
