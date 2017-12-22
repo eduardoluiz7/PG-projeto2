@@ -158,10 +158,5 @@ public class Camera {
 			intervalos.add(Util.scanLine(triangulos2D.get(triangulosConvertidos.get(i).indice)));
 		}
 	}
-	
-	public static void moveZ(double z){
-		Camera.C.z += z;	
-	}
-
 
 }

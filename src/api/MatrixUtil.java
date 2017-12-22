@@ -1,5 +1,6 @@
 package api;
 public class MatrixUtil {
+	
 	//Verifica se matriz é nula
 	public static boolean nula(double[][] matriz, int m, int n){
 		for(int i = 0; i < m; i++){
@@ -207,7 +208,6 @@ public class MatrixUtil {
 			matriz[linha][i] *= mult;
 		}
 	}
-	
 	
 	public static String matrizToString(double[][] matriz, int m, int n) {
 		String s = "";
